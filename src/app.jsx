@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { supabase } from './supabaseClient'
+import Dashboard from './dashboard'
 
 export default function App() {
   const [session, setSession] = useState(null)
@@ -70,9 +71,6 @@ export default function App() {
   }
 
   return (
-    <div className="min-h-screen bg-slate-950 text-white p-8">
-      <h1 className="text-2xl font-bold">Dashboard Operativo</h1>
-      <button onClick={() => supabase.auth.signOut()} className="mt-4 text-rose-400 text-sm">Cerrar Sesión</button>
-    </div>
+    <Dashboard onLogout={() => supabase.auth.signOut()} />
   )
 }
